@@ -1,10 +1,7 @@
 const router = require('express').Router()
 const {Treehouse} = require('../db/models')
-
-router.get('/', async (req, res, next) => {
-  const houses = await Treehouse.findAll()
-  res.json(houses)
-})
+const {list} = require('../controllers/treeHouseController.api.js')
+router.get('/', list)
 
 router.get('/:id', async (req, res, next) => {
   try {

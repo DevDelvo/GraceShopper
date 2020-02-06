@@ -1,34 +1,31 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {thunkGetAllHouses, addToCartThunk} from '../store'
+import Treehouse from './TreeHouse'
 
 class AllProducts extends Component {
   componentDidMount() {
     this.props.getTreeHouses()
   }
+
+  renderTreeHouses = treeHouses => {
+    const {user: {id}, isLoggedIn, addToCart} = this.props
+    return treeHouses.map(house => (
+      <Treehouse
+        key={house.id}
+        userId={id}
+        isLoggedIn={isLoggedIn}
+        house={house}
+        addToCart={addToCart}
+      />
+    ))
+  }
+
   render() {
-    const treeHouses = this.props.treeHouses
+    const {treeHouses} = this.props
     return (
-      <div className="TreeHouseContainer">
-        {treeHouses.map(house => (
-          <div className="SingleTreeHouse" key={house.id}>
-            <h2 className="SingleTreeHouseLabels">{house.name}</h2> $
-            {house.price}
-            <br />
-            <img src={house.imageUrl} />
-            <br />
-            <button
-              type="button"
-              onClick={
-                this.props.isLoggedIn
-                  ? () => this.props.addToCart(house, this.props.user.id)
-                  : () => this.props.addToCart(house)
-              }
-            >
-              Add To Cart
-            </button>
-          </div>
-        ))}
+      <div className="tree-houses-container">
+        {this.renderTreeHouses(treeHouses)}
       </div>
     )
   }

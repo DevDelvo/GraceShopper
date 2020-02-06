@@ -1,10 +1,9 @@
 const router = require('express').Router()
 const {User, Cart, Treehouse} = require('../db/models')
 const {isAdminMiddleware, isUserMiddleware} = require('../security')
-module.exports = router
 
 //mounted on api/users
-router.get('/', isAdminMiddleware, async (req, res, next) => {
+router.get('/', async (req, res, next) => {
   try {
     const users = await User.findAll({
       // explicitly select only the id and email fields - even though
@@ -206,3 +205,5 @@ router.put('/:userId/checkout', isUserMiddleware, async (req, res, next) => {
     next(error)
   }
 })
+
+module.exports = router

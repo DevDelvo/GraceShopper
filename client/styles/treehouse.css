@@ -1,0 +1,52 @@
+.tree-houses-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.tree-house {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  padding: 30px;
+  color: black;
+  border: 1px solid orange;
+  background-color: rgb(245, 245, 220, 0.5);
+  margin: 10px;
+}
+
+.tree-house-name {
+  color: #3aa96a;
+  margin: 0px;
+  font-size: 1.2rem;
+}
+
+.tree-house-price {
+  margin: 0px;
+}
+
+.tree-house-image {
+  width: 200px;
+  height: 200px;
+  align-self: center;
+  flex-direction: column;
+  padding: 5;
+  color: 'white';
+}
+
+.add-to-cart {
+  width: 100px;
+  margin: 10px;
+  align-self: center;
+  background: rgba(146, 100, 50);
+  border-radius: 5px;
+  color: inherit;
+  font: inherit;
+  border: none;
+  cursor: pointer;
+}
+
+.add-to-cart:hover {
+  color: rgb(245, 225, 240);
+  background: rgba(146, 100, 50, 0.7);
+}

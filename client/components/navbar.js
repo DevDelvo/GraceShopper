@@ -3,35 +3,34 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
+import '../styles/navbar.css'
 
 const Navbar = props => {
   const {handleClick, isLoggedIn} = props
   return (
-    <div>
-      <h1>
-        <Link to="/">TreeBeCa</Link>
-      </h1>
-      <nav>
+    <header className="header">
+      <nav className="navbar">
+        <div className="navbar-left">
+          <Link className="home" to="/">
+            TreeBeCa
+          </Link>
+        </div>
         {isLoggedIn ? (
-          <div>
-            {/* The navbar will show these links after you log in */}
-            <Link to="/home">Home</Link>
+          <div className="navbar-right">
             <a href="#" onClick={() => handleClick(props)}>
               Logout
             </a>
             <Link to="/cart">Cart</Link>
           </div>
         ) : (
-          <div>
-            {/* The navbar will show these links before you log in */}
+          <div className="navbar-right">
             <Link to="/login">Login</Link>
             <Link to="/signup">Sign Up</Link>
             <Link to="/cart">Cart</Link>
           </div>
         )}
       </nav>
-      <hr />
-    </div>
+    </header>
   )
 }
 
